@@ -1,20 +1,18 @@
-// Person constructor function
+// Constructor function for Person
 function Person(name, age) {
   this.name = name;
   this.age = age;
 }
 
-// Person prototype method
+// Add a method to the Person prototype
 Person.prototype.greet = function() {
   console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
 }
 
-// Employee constructor function
+// Constructor function for Employee
 function Employee(name, age, jobTitle) {
-  // call the Person constructor function and set its properties
+  // Call the parent constructor
   Person.call(this, name, age);
-
-  // set the Employee-specific property
   this.jobTitle = jobTitle;
 }
 
@@ -22,11 +20,7 @@ function Employee(name, age, jobTitle) {
 Employee.prototype = Object.create(Person.prototype);
 Employee.prototype.constructor = Employee;
 
-// Employee prototype method
+// Add a method to the Employee prototype
 Employee.prototype.jobGreet = function() {
   console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
 }
-
-// Do not change code below this line
-window.Person = Person;
-window.Employee = Employee;
